@@ -1,0 +1,21 @@
+# Stack Vita
+
+version: "3.8"
+
+services:
+  interface:
+    image: ${INTERFACE_IMAGE}
+    environment:
+      INFISICAL_UNIVERSAL_AUTH_CLIENT_ID: ${INFISICAL_UNIVERSAL_AUTH_CLIENT_ID}
+      INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET}
+      INFISICAL_ENVIRONMENT: ${INFISICAL_ENVIRONMENT}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+    deploy:
+      placement:
+        constraints:
+          - node.labels.${NODE_LABEL} == 1
+    ports:
+      - ":80"
+
+
+
